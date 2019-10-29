@@ -1,0 +1,26 @@
+{
+    "build_systems":
+    [
+        {
+            "name": "Pandoc",
+            "cmd": [
+                "pandoc",
+                "myslides.md",
+                "-t", "revealjs",
+                "-s",
+                "-o", "myslides.html",
+                "--mathjax",
+                "-V", "controls=false",
+                "--slide-level", "2",
+                "--css", "myslides.css"
+            ],
+            "working_dir": "$project_path"
+        }
+    ],
+    "folders":
+	[
+		{
+			"path": "."
+		}
+	]
+}
