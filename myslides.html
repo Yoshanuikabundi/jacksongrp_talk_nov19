@@ -54,14 +54,17 @@
 </div></section>
 <section><section id="lets-think-statistically" class="title-slide slide level1"><h1>Lets think statistically</h1></section><section id="protein-structure-forms-according-to-a-probability-distribution" class="slide level2">
 <h2>Protein structure forms according to a probability distribution</h2>
-<p>Ready for some maths?</p>
+</section><section id="folded-proteins-have-a-funnel-shaped-probability-distribution" class="slide level2">
+<h2>Folded proteins have a funnel-shaped probability distribution</h2>
+</section><section id="ready-for-some-maths" class="slide level2">
+<h2>Ready for some maths?</h2>
 </section><section class="slide level2">
 
 <h5 id="the-boltzmann-distribution">The Boltzmann Distribution</h5>
 <p><span style="font-size: 54px"><span class="math display">\[
     P_i = \frac{\exp(-\beta\epsilon_i)}{Z}
 \]</span></span></p>
-<p><span class="math inline">\(P_i\)</span> is the probability of state <span class="math inline">\(i\)</span></p>
+<p><span class="math inline">\(P_i\)</span> is the probability of state <span class="math inline">\(i\)</span> at equilibrium</p>
 <p><span class="math inline">\(\exp(x)\)</span> is the exponential function <span class="math inline">\(e^x\)</span></p>
 <p><span class="math inline">\(\epsilon_i\)</span> is the energy of state <span class="math inline">\(i\)</span></p>
 <aside class="notes">
@@ -70,13 +73,133 @@
 <p><span class="math inline">\(\beta = \frac{1}{K_BT}\)</span> incorporates the temperature</p>
 <div class="fragment">
 <p><span class="math display">\[
-    \label{eqn:partition-function}
     Z = \sum_{i}\exp(-\beta\epsilon_i)
 \]</span></p>
 </div>
+</section><section id="there-are-two-problems" class="slide level2">
+<h2>There are two problems</h2>
+<p><span style="font-size: 72px"><span class="math display">\[
+    P_i = \frac{
+        \exp(-\beta\epsilon_i)
+    }{
+        Z
+    }
+\]</span></span></p>
+<ol type="1">
+<li>Which states are most important</li>
+<li>How important are those states</li>
+</ol>
+</section><section id="fast-methods-assume-there-is-only-one-important-state" class="slide level2">
+<h2>Fast methods assume there is only one important state</h2>
+<p>So we just find the minimum energy state</p>
+<p><span class="math display">\[
+    1 = P_\mathrm{min} = \frac{
+        \exp(-\beta\epsilon_\mathrm{min})
+    }{
+        Z
+    }
+    \\
+    Z = \sum_i^1\exp(-\beta\epsilon_{i}) = \exp(-\beta\epsilon_\mathrm{min})
+\]</span></p>
+<div class="fragment">
+<p>Entropic effects must be part of the energy <span class="math inline">\(\epsilon\)</span></p>
+</div>
+</section><section id="anyone-want-more-maths" class="slide level2">
+<h2>Anyone want more maths?</h2>
+<p>A really nice way to think about entropy is only a few algebraic manipulations away!</p>
+</section><section id="what-is-energy" class="slide level2">
+<h2>What <em>is</em> energy</h2>
+<p><span class="math display">\[
+    P_i = \frac{
+        \exp(-\beta\epsilon_i)
+    }{
+        Z
+    }
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+    \exp(-\frac{1}{K_B T}\epsilon_i) = P_i Z
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    -\frac{1}{K_B T}\epsilon_i = \log(P_i Z)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
+\]</span></p>
+</div>
+</section><section id="what-about-the-difference" class="slide level2">
+<h2>What about the difference?</h2>
+<p><span class="math display">\[
+    \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
+    \\
+    \epsilon_j = - K_B T \log(P_j) - K_B T \log(Z)
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+    \epsilon_i - \epsilon_j = - K_B T \log(P_i) + K_B T \log(P_j)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \epsilon_i - \epsilon_j = - K_B T \log(\frac{P_i}{P_j})
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \Delta \epsilon = - K_B T \log(\Delta P)
+\]</span></p>
+<p>This is a bit abusive towards notation</p>
+</div>
+</section><section id="what-is-entropy" class="slide level2">
+<h2>What is entropy</h2>
+<p><span class="math display">\[
+    S_i = K_B \log(\Omega_i)
+\]</span></p>
+<p><span class="math inline">\(\Omega_i\)</span> is the number of microstates within state <span class="math inline">\(i\)</span></p>
+<p><span class="math display">\[
+    \Delta G = \Delta H - T \Delta S
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+    \Delta G = - K_B T \log(\Delta P) - K_B T \log(\Delta \Omega)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \Delta G = - K_B T \log(\Delta \Omega \Delta P)
+\]</span></p>
+</div>
+<div class="fragment">
+<p>In reality, not all the microstates have the same energy, but this is the gist.</p>
+</div>
+</section><section id="if-you-want-more-check-out-stat-mech" class="slide level2">
+<h2>If you want more, check out stat mech!</h2>
+</section><section id="relative-energies-are-negative-log-likelihoods" class="slide level2">
+<h2>Relative energies are negative log likelihoods</h2>
+<p><span style="font-size: 32px"><span class="math display">\[
+    \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
+\]</span></span></p>
+<div class="fragment">
+<p><span style="font-size: 48px"><span class="math display">\[
+    \epsilon_{i\mathrm{rel}} = - K_B T \log(P_i)
+\]</span></span></p>
+</div>
+<div class="fragment">
+<p>When we add energies, we multiply probabilities</p>
+<p><span style="font-size: 48px"><span class="math display">\[
+    \epsilon_{i\mathrm{rel}} + \epsilon_{j\mathrm{rel}} = - K_B T \log(P_i P_j)
+\]</span></span></p>
+</div>
+</section></section>
+<section><section id="what-happens-if-we-dont-make-that-assumption" class="title-slide slide level1"><h1>What happens if we don’t make that assumption?</h1><p>MD!</p></section><section id="what-happens-if-we-dont-make-that-assumption-1" class="slide level2">
+<h2>What happens if we don’t make that assumption?</h2>
+<p>We need to “sample” from the entire Boltzmann distribution</p>
 </section></section>
 <section id="no-more-maths" class="title-slide slide level1"><h1>No more maths</h1><p>I promise</p></section>
-<section id="so" class="title-slide slide level1"><h1>So</h1></section>
     </div>
   </div>
 
@@ -94,7 +217,7 @@
         // Push each slide change to the browser history
         history: true,
         // Factor of the display size that should remain empty around the content
-        margin: 0.2,
+        margin: 0.1,
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
           config: 'TeX-AMS_HTML-full',
