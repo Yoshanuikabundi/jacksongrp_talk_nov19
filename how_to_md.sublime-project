@@ -12,7 +12,8 @@
                 "--mathjax",
                 "-V", "controls=false",
                 "--slide-level", "2",
-                "--css", "myslides.css"
+                "--css", "myslides.css",
+                "--template", "revealjs.template"
             ],
             "working_dir": "$project_path"
         }
@@ -22,5 +23,15 @@
 		{
 			"path": "."
 		}
-	]
+	],
+    "settings":
+    {
+
+        "preview_math_template_packages":
+        [
+            "\\usepackage{amsmath}",
+            "\\usepackage{amssymb}",
+            "\\usepackage{unicode-math}",
+        ],
+    }
 }
