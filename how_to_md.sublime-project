@@ -13,7 +13,8 @@
                 "-V", "controls=false",
                 "--slide-level", "2",
                 "--css", "myslides.css",
-                "--template", "revealjs.template"
+                "--template", "revealjs.template",
+                "--filter", "pandoc-citeproc"
             ],
             "working_dir": "$project_path"
         }

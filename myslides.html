@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="author" content="Josh Mitchell">
   <meta name="dcterms.date" content="2019-11-09">
-  <title>Computational Chemistry Considered ???</title>
+  <title>Computational Chemistry Considered CHARMMful</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -36,31 +36,26 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Computational Chemistry Considered ???</h1>
+  <h1 class="title">Computational Chemistry Considered CHARMMful</h1>
   <p class="author">Josh Mitchell</p>
   <p class="date">November 9, 2019</p>
 </section>
 
-<section id="why-am-i-here" class="title-slide slide level1"><h1>Why am I here</h1><div>
+<section id="why-am-i-here" class="title-slide slide level1"><h1>Why am I here</h1><p>Computational methods can be…</p>
 <ul>
-<li class="fragment">Computational methods can be…
-<ul>
-<li class="fragment">Complementary to experiment</li>
-<li class="fragment">Faster/cheaper than experiment</li>
-<li class="fragment">More detailed than experiment</li>
-</ul></li>
-<li class="fragment">Though usually not at the same time</li>
+<li>Complementary to experiment</li>
+<li>Faster/cheaper than experiment</li>
+<li>More detailed than experiment</li>
 </ul>
-</div></section>
+<p>Though usually not at the same time</p></section>
 <section><section id="lets-think-statistically" class="title-slide slide level1"><h1>Lets think statistically</h1></section><section id="protein-structure-forms-according-to-a-probability-distribution" class="slide level2">
 <h2>Protein structure forms according to a probability distribution</h2>
 </section><section id="folded-proteins-have-a-funnel-shaped-probability-distribution" class="slide level2">
 <h2>Folded proteins have a funnel-shaped probability distribution</h2>
 </section><section id="ready-for-some-maths" class="slide level2">
 <h2>Ready for some maths?</h2>
-</section><section class="slide level2">
-
-<h5 id="the-boltzmann-distribution">The Boltzmann Distribution</h5>
+</section><section id="the-boltzmann-distribution" class="slide level2" style="font-size: 24px">
+<h2>The Boltzmann Distribution</h2>
 <p><span style="font-size: 50px"><span class="math display">\[
     P_i = \frac{\exp(-\beta\epsilon_i)}{Z}
 \]</span></span></p>
@@ -68,13 +63,13 @@
 <p><span class="math inline">\(\exp(x)\)</span> is the exponential function <span class="math inline">\(e^x\)</span></p>
 <p><span class="math inline">\(\epsilon_i\)</span> is the energy of state <span class="math inline">\(i\)</span></p>
 <aside class="notes">
-<p>Which energy <span class="math inline">\(\epsilon_i\)</span> represents depends on how state <span class="math inline">\(i\)</span> is represented - Free energy for coarse grained representations - Hamiltonian for canonical ensemble in phase space - Potential energy for canonical ensemble in configuration space</p>
+<p>What kind of energy <span class="math inline">\(\epsilon_i\)</span> is depends on how state <span class="math inline">\(i\)</span> is represented - Free energy for coarse grained representations - Hamiltonian for canonical ensemble in phase space - Potential energy for canonical ensemble in configuration space</p>
 </aside>
 <p><span class="math inline">\(\beta = \frac{1}{K_BT}\)</span> incorporates the temperature</p>
 <div class="fragment">
-<p><span class="math display">\[
-    Z = \sum_{i}\exp(-\beta\epsilon_i)
-\]</span></p>
+<p><span style="font-size: 32px"><span class="math display">\[
+    Z = \sum_{j}\exp(-\beta\epsilon_j)
+\]</span></span></p>
 </div>
 </section><section id="there-are-two-problems" class="slide level2">
 <h2>There are two problems</h2>
@@ -103,15 +98,273 @@
 <p>Entropic effects must be part of the energy <span class="math inline">\(\epsilon\)</span></p>
 </div>
 </section></section>
-<section id="what-happens-if-we-dont-make-that-assumption" class="title-slide slide level1" style="font-size: 24px"><h1>What happens if we don’t make that assumption?</h1><p><span style="font-size: 72px"><span class="math display">\[
+<section><section id="what-happens-if-we-dont-make-that-assumption" class="title-slide slide level1" style="font-size: 24px"><h1>What happens if we don’t make that assumption?</h1><p><span style="font-size: 72px"><span class="math display">\[
     P_i = \frac{
         \exp(-\beta\epsilon_i)
     }{
         Z
     }
 \]</span></span></p>
-<p>We need to “sample” from the entire Boltzmann distribution</p></section>
+<p>We need to <em>sample</em> from the entire Boltzmann distribution</p></section><section id="sampling-is-hard" class="slide level2">
+<h2>Sampling is hard</h2>
+<h3 id="levinthals-paradox">Levinthal’s paradox</h3>
+<p>~50 KDa, 500 residue protein</p>
+<p>Assume each residue is either α-helix or β-sheet</p>
+<p>Looking for 1 folded state in 2<sup>500</sup> (~10<sup>150</sup>) possible states</p>
+<p>Yet, nature can do it</p>
+</section><section id="molecular-dynamics" class="slide level2">
+<h2>Molecular dynamics</h2>
+<p>Calculate forces from the energy function (“force field”)</p>
+<p>Step the system through time with classical mechanics</p>
+<p>Let the shape of the probability distribution guide your sampling</p>
+</section><section id="simulation-is-the-method-not-the-goal" class="slide level2">
+<h2>Simulation is the method, not the goal</h2>
+<p>Kinetics are unreliable</p>
+<p>Produces lots of noisy data</p>
+<p>Humans are good at finding patterns</p>
+</section><section id="know-what-youre-looking-for" class="slide level2">
+<h2>Know what you’re looking for</h2>
+<p>Just like experiments</p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<blockquote>
+<p>I’m looking for a non-crystallographic, highly populated state</p>
+</blockquote>
+<blockquote>
+<p>I’m looking for the important states in solution near the crystal structure</p>
+</blockquote>
+</div><div class="column" style="width:33%;">
+<blockquote>
+<p>I’m looking for the folded state from an extended model or homology model</p>
+</blockquote>
+<blockquote>
+<p>I wanna measure the free energy of this process</p>
+</blockquote>
+</div><div class="column" style="width:33%;">
+<blockquote>
+<p>I wanna measure the FRET efficiency in this state</p>
+</blockquote>
+<blockquote>
+<p>I wanna see if my crystal structure is stable in solution</p>
+</blockquote>
+</div>
+</div>
+<p>Make sure it’s computationally feasible</p>
+</section><section id="check-youve-found-it" class="slide level2">
+<h2>Check you’ve found it</h2>
+<p>Check everything seems reasonable</p>
+<blockquote>
+<p>The good, the bad and the user in soft matter simulations <span class="citation" data-cites="Wongekkabut2016Good">(Wong-ekkabut and Karttunen 2016)</span></p>
+</blockquote>
+<p>Make sure it’s not just a statistical fluke</p>
+<blockquote>
+<p>Best practices for quantification of uncertainty and sampling quality in molecular simulations <span class="citation" data-cites="Grossfield2018Best">(Grossfield et al. 2018)</span></p>
+</blockquote>
+<p>Run replicas</p>
+<blockquote>
+<p>Avoiding False Positive Conclusions in Molecular Simulation: The Importance of Replicas <span class="citation" data-cites="Knapp2018Avoiding">(Knapp, Ospina, and Deane 2018)</span></p>
+</blockquote>
+</section><section id="so" class="slide level2">
+<h2>So</h2>
+<ul>
+<li>Simulation is the method, not the goal</li>
+<li>Know what you’re looking for</li>
+<li>Check you’ve found it</li>
+</ul>
+<h3 id="questions-about-sampling">Questions about sampling?</h3>
+</section></section>
+<section><section id="anyone-want-more-maths" class="title-slide slide level1"><h1>Anyone want more maths?</h1><p>A really nice way to think about entropy is only a few algebraic manipulations away!</p></section><section id="what-is-energy" class="slide level2">
+<h2>What <em>is</em> energy</h2>
+<p><span class="math display">\[
+    P_i = \frac{
+        \exp(-\beta\epsilon_i)
+    }{
+        Z
+    }
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+    \exp(-\frac{1}{K_B T}\epsilon_i) = P_i Z
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    -\frac{1}{K_B T}\epsilon_i = \log(P_i Z)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
+\]</span></p>
+</div>
+</section><section id="what-is-entropy" class="slide level2">
+<h2>What is entropy?</h2>
+<p>Suppose we have a state <span class="math inline">\(i\)</span> that comprises <span class="math inline">\(\Omega_i\)</span> microstates, each of probability <span class="math inline">\(p_i\)</span></p>
+<p><span class="math display">\[
+    P_i = \Omega_i p_i
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+    \epsilon_i = - K_B T \log(\Omega_i p_i) - K_B T \log(Z)
+\]</span></p>
+</div>
+</section><section id="whats-the-difference" class="slide level2">
+<h2>What’s the difference?</h2>
+<p><span class="math display">\[
+    \epsilon_i = - K_B T \log(\Omega_i p_i) - K_B T \log(Z)
+    \\
+    \epsilon_j = - K_B T \log(\Omega_j p_j) - K_B T \log(Z)
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+    \epsilon_i - \epsilon_j =  - K_B T \log(\Omega_i p_i) + K_B T \log(\Omega_j p_j)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \epsilon_i - \epsilon_j =   - K_B T \log(p_i) + K_B T \log(p_j)
+    \\ \qquad \qquad \qquad - K_B T \log(\Omega_i) + K_B T \log(\Omega_j)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \Delta \epsilon =  \Delta[- K_B T \log(p)] - T \Delta[K_B \log(\Omega)]
+\]</span></p>
+</div>
+</section><section id="anyone-recognise-this" class="slide level2">
+<h2>Anyone recognise this?</h2>
+<p><span class="math display">\[
+    \Delta \epsilon =  \Delta[- K_B T \log(p)] - T \Delta[K_B \log(\Omega)]
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+G = \epsilon
+\\
+H = - K_B T \log(p)
+\\
+S = K_B \log(\Omega)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \Delta G =   \Delta H - T \Delta S
+\]</span></p>
+</div>
+<div class="fragment">
+<p>In reality, not all the microstates have the same energy, but this is the gist.</p>
+</div>
+</section><section id="if-you-want-more-check-out-stat-mech" class="slide level2">
+<h2>If you want more, check out stat mech!</h2>
+</section></section>
 <section id="no-more-maths" class="title-slide slide level1"><h1>No more maths</h1><p>I promise</p></section>
+<section><section id="a-quick-run-down-of-force-fields" class="title-slide slide level1"><h1>A quick run down of force fields</h1></section><section id="what-to-look-for-in-a-force-field" class="slide level2">
+<h2>What to look for in a force field</h2>
+<p>Can it model all the parts of my system?</p>
+<p>Does it accurately produce the kind of data I’m looking for?</p>
+<p>Has it been validated by people other than the authors?</p>
+<p>Can I trust the parameters I have in the format I use?</p>
+</section><section id="warnings" class="slide level2">
+<h2>WARNINGS</h2>
+<p>Don’t confuse force field and software!</p>
+<p>Don’t mix parameters from different force fields!</p>
+<p>Most force fields are not parameterised for kinetics!</p>
+</section><section id="charmm" class="slide level2">
+<h2>CHARMM</h2>
+<dl>
+<dt>CHARMM22*</dt>
+<dd>Extremely well validated force field for vanilla proteins. Reasonable accuracy even for IDPs and loop regions, despite not being parametrised for this. CHARMM22 modified by Shaw group.
+</dd>
+<dt>CHARMM36m</dt>
+<dd>CHARMM36 modified for better performance with IDPs and loop regions. Distributed in many formats by the authors.
+</dd>
+</dl>
+</section><section id="amber" class="slide level2">
+<h2>AMBER</h2>
+<p>Great supplementary DNA and metallic ion parameters</p>
+<dl>
+<dt>AMBER99SB-<em>disp</em></dt>
+<dd>AMBER99SB-ILDN with torsion and protein-water VDW optimisations by Shaw group. 4-point water model (slow). State-of-the-art IDP/loop accuracy (according to authors).
+</dd>
+<dt>AMBER99SB*-ildn</dt>
+<dd>AMBER99SB with optimised torsions. Solid, widely used AMBER force field. Predates the IDP revolution. Several daughter force fields with improved performance.
+</dd>
+</dl>
+</section><section id="martini" class="slide level2">
+<h2>MARTINI</h2>
+<p>Coarse grained!</p>
+<p>1000-fold faster than atomic MD</p>
+<p>Converged MARTINI probably more accurate than unconverged atomic force fields</p>
+</section><section id="other-stuff" class="slide level2">
+<h2>Other stuff</h2>
+<dl>
+<dt>GROMOS 54a7</dt>
+<dd>Great for arbitrary chemicals (ATB). Outdated for proteins.
+</dd>
+<dt>OPLS 3e</dt>
+<dd>Schrödinger’s proprietary force field. Claims experimental accuracy for binding free energies of arbitrary drug molecules to proteins. Expensive to license. Proteins under-validated.
+</dd>
+</dl>
+</section><section id="questions-about-force-fields" class="slide level2">
+<h2>Questions about force fields?</h2>
+</section></section>
+<section><section id="a-few-traps" class="title-slide slide level1"><h1>A few traps</h1></section><section id="use-the-same-parameters-as-your-force-field-authors" class="slide level2">
+<h2>Use the same parameters as your force field authors</h2>
+<p>Read the paper!</p>
+<p>Use same VDW cutoff range and method.</p>
+<p>PME is usually OK if force field uses other long-range electrostatic treatment.</p>
+<p>Use same water model.</p>
+<p>Use same constraints (everyone breaks this rule and it might be OK)</p>
+</section><section id="thermostats-and-barostats" class="slide level2">
+<h2>Thermostats and barostats</h2>
+<p>Don’t ever use Berendsen thermostats or barostats in production!</p>
+</section><section id="thermostat" class="slide level2">
+<h2>Thermostat</h2>
+<p>Just use Bussi’s stochastic velocity rescaling thermostat for everything (<code>v-rescale</code> in GROMACS). Use a Nosé–Hoover chain if that’s unavailable.</p>
+</section><section id="barostat" class="slide level2">
+<h2>Barostat</h2>
+<p>Use a Monte Carlo barostat if available (unless you really care about how the box changes shape). Coming soon to GROMACS.</p>
+<p>If not, or if you care about box dynamics:</p>
+<ul>
+<li>Use Berendsen or Monte Carlo for equilibration</li>
+<li>Use Parrinello-Rahman or MTTK for production</li>
+</ul>
+</section><section id="step-size" class="slide level2">
+<h2>Step size</h2>
+<p>It’s OK to make it as big as possible, as long as your simulation doesn’t crash.</p>
+<p>If your simulation crashes, try reducing the step size.</p>
+<p>Atomic production simulations should never need to be below 1 fs, or 2 fs with constraints.</p>
+<p>Adjacent frames are very similar - don’t be afraid to drop them! Keeping 1000 frames for your whole simulation is probably overkill!</p>
+</section><section id="non-monovalent-metal-cations" class="slide level2">
+<h2>Non-monovalent metal cations</h2>
+<p>Shape of orbitals is important IRL, but force fields are spherically symmetric!</p>
+<p>Some work has been done on introducing virtual particles to correct this</p>
+</section><section id="protonation-state" class="slide level2">
+<h2>Protonation state</h2>
+<p>Set at start of simulation.</p>
+<p>If you’re doing experiments near the P<em>K</em><sub>a</sub> of something, be careful!</p>
+</section><section id="enhanced-sampling" class="slide level2">
+<h2>Enhanced sampling</h2>
+<p>Enhanced sampling is good.</p>
+<p>Replica exchange is good.</p>
+<p>Biased sampling methods are good if you have a good reaction coordinate.</p>
+<p>Ensemble sampling methods will probably be good very soon.</p>
+<p>Be careful with accelerated MD.</p>
+<p>Make sure you should know what you’re doing.</p>
+</section></section>
+<section id="further-reading" class="title-slide slide level1"><h1>Further reading</h1><div id="refs" role="doc-bibliography">
+<div id="ref-Braun2018Best">
+<p>Braun, Efrem, Justin Gilmer, Heather B. Mayes, David L. Mobley, Jacob I. Monroe, Samarjeet Prasad, and Daniel M. Zuckerman. 2018. “Best Practices for Foundations in Molecular Simulations [Article V1.0].” <em>Living Journal of Computational Molecular Science</em> 1 (1): 5957. <a href="https://doi.org/10.33011/livecoms.1.1.5957">https://doi.org/10.33011/livecoms.1.1.5957</a>.</p>
+</div>
+<div id="ref-Grossfield2018Best">
+<p>Grossfield, Alan, Paul N. Patrone, Daniel R. Roe, Andrew J. Schultz, Daniel Siderius, and Daniel M. Zuckerman. 2018. “Best Practices for Quantification of Uncertainty and Sampling Quality in Molecular Simulations [Article V1.0].” <em>Living Journal of Computational Molecular Science</em> 1 (1): 5067. <a href="https://doi.org/10.33011/livecoms.1.1.5067">https://doi.org/10.33011/livecoms.1.1.5067</a>.</p>
+</div>
+<div id="ref-Knapp2018Avoiding">
+<p>Knapp, Bernhard, Luis Ospina, and Charlotte M. Deane. 2018. “Avoiding False Positive Conclusions in Molecular Simulation: The Importance of Replicas.” <em>Journal of Chemical Theory and Computation</em> 14 (12): 6127–38. <a href="https://doi.org/10.1021/acs.jctc.8b00391">https://doi.org/10.1021/acs.jctc.8b00391</a>.</p>
+</div>
+<div id="ref-Wongekkabut2016Good">
+<p>Wong-ekkabut, Jirasak, and Mikko Karttunen. 2016. “The Good, the Bad and the User in Soft Matter Simulations.” <em>Biochimica et Biophysica Acta (BBA) - Biomembranes</em> 1858 (10): 2529–38. <a href="https://doi.org/10.1016/j.bbamem.2016.02.004">https://doi.org/10.1016/j.bbamem.2016.02.004</a>.</p>
+</div>
+</div></section>
     </div>
   </div>
 
@@ -125,7 +378,7 @@
         // Display controls in the bottom right corner
         controls: false,
         // Display the page number of the current slide
-        slideNumber: "c/t",
+        slideNumber: "c",
         // Push each slide change to the browser history
         history: true,
         // Factor of the display size that should remain empty around the content
