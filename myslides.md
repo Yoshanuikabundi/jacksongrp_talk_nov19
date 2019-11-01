@@ -32,7 +32,7 @@ revealjs-url: reveal.js
 
 [$$
     P_i = \frac{\exp(-\beta\epsilon_i)}{Z}
-$$]{style="font-size: 54px"}
+$$]{style="font-size: 50px"}
 
 $P_i$ is the probability of state $i$ at equilibrium
 
@@ -73,13 +73,11 @@ $$]{style="font-size: 72px"}
 So we just find the minimum energy state
 
 $$
-    1 = P_\mathrm{min} = \frac{
+    P_\mathrm{min} = \frac{
         \exp(-\beta\epsilon_\mathrm{min})
     }{
-        Z
-    }
-    \\
-    Z = \sum_i^1\exp(-\beta\epsilon_{i}) = \exp(-\beta\epsilon_\mathrm{min})
+        \exp(-\beta\epsilon_\mathrm{min})
+    } = 1
 $$
 
 . . .
@@ -118,56 +116,67 @@ $$
     \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
 $$
 
-## What about the difference?
+## What is entropy?
+
+Suppose we have a state $i$ that comprises $\Omega_i$ microstates, each of probability $p_i$
 
 $$
-    \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
+    P_i = \Omega_i p_i
+$$
+
+. . .
+
+$$
+    \epsilon_i = - K_B T \log(\Omega_i p_i) - K_B T \log(Z)
+$$
+
+## What's the difference?
+
+$$
+    \epsilon_i = - K_B T \log(\Omega_i p_i) - K_B T \log(Z)
     \\
-    \epsilon_j = - K_B T \log(P_j) - K_B T \log(Z)
+    \epsilon_j = - K_B T \log(\Omega_j p_j) - K_B T \log(Z)
 $$
 
 . . .
 
 $$
-    \epsilon_i - \epsilon_j = - K_B T \log(P_i) + K_B T \log(P_j)
+    \epsilon_i - \epsilon_j =  - K_B T \log(\Omega_i p_i) + K_B T \log(\Omega_j p_j)
 $$
 
 . . .
 
 $$
-    \epsilon_i - \epsilon_j = - K_B T \log(\frac{P_i}{P_j})
+    \epsilon_i - \epsilon_j =   - K_B T \log(p_i) + K_B T \log(p_j)
+    \\ \qquad \qquad \qquad - K_B T \log(\Omega_i) + K_B T \log(\Omega_j)
 $$
 
 . . .
 
 $$
-    \Delta \epsilon = - K_B T \log(\Delta P)
+    \Delta \epsilon =  \Delta[- K_B T \log(p)] - T \Delta[K_B \log(\Omega)]
 $$
 
-This is a bit abusive towards notation
-
-## What is entropy
+## Anyone recognise this?
 
 $$
-    S_i = K_B \log(\Omega_i)
-$$
-
-$\Omega_i$ is the number of microstates within state $i$
-
-$$
-    \Delta G = \Delta H - T \Delta S
+    \Delta \epsilon =  \Delta[- K_B T \log(p)] - T \Delta[K_B \log(\Omega)]
 $$
 
 . . .
 
 $$
-    \Delta G = - K_B T \log(\Delta P) - K_B T \log(\Delta \Omega)
+G = \epsilon
+\\
+H = - K_B T \log(p)
+\\
+S = K_B \log(\Omega)
 $$
 
 . . .
 
 $$
-    \Delta G = - K_B T \log(\Delta \Omega \Delta P)
+    \Delta G =   \Delta H - T \Delta S
 $$
 
 . . .
@@ -196,10 +205,15 @@ When we add energies, we multiply probabilities
     \epsilon_{i\mathrm{rel}} + \epsilon_{j\mathrm{rel}} = - K_B T \log(P_i P_j)
 $$]{style="font-size: 48px"}
 
-# What happens if we don't make that assumption?
-MD!
+# What happens if we don't make that assumption? {style="font-size: 24px"}
 
-## What happens if we don't make that assumption?
+[$$
+    P_i = \frac{
+        \exp(-\beta\epsilon_i)
+    }{
+        Z
+    }
+$$]{style="font-size: 72px"}
 
 We need to "sample" from the entire Boltzmann distribution
 

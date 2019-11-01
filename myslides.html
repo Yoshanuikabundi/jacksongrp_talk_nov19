@@ -61,7 +61,7 @@
 </section><section class="slide level2">
 
 <h5 id="the-boltzmann-distribution">The Boltzmann Distribution</h5>
-<p><span style="font-size: 54px"><span class="math display">\[
+<p><span style="font-size: 50px"><span class="math display">\[
     P_i = \frac{\exp(-\beta\epsilon_i)}{Z}
 \]</span></span></p>
 <p><span class="math inline">\(P_i\)</span> is the probability of state <span class="math inline">\(i\)</span> at equilibrium</p>
@@ -93,13 +93,11 @@
 <h2>Fast methods assume there is only one important state</h2>
 <p>So we just find the minimum energy state</p>
 <p><span class="math display">\[
-    1 = P_\mathrm{min} = \frac{
+    P_\mathrm{min} = \frac{
         \exp(-\beta\epsilon_\mathrm{min})
     }{
-        Z
-    }
-    \\
-    Z = \sum_i^1\exp(-\beta\epsilon_{i}) = \exp(-\beta\epsilon_\mathrm{min})
+        \exp(-\beta\epsilon_\mathrm{min})
+    } = 1
 \]</span></p>
 <div class="fragment">
 <p>Entropic effects must be part of the energy <span class="math inline">\(\epsilon\)</span></p>
@@ -131,46 +129,57 @@
     \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
 \]</span></p>
 </div>
-</section><section id="what-about-the-difference" class="slide level2">
-<h2>What about the difference?</h2>
-<p><span class="math display">\[
-    \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
-    \\
-    \epsilon_j = - K_B T \log(P_j) - K_B T \log(Z)
-\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[
-    \epsilon_i - \epsilon_j = - K_B T \log(P_i) + K_B T \log(P_j)
-\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[
-    \epsilon_i - \epsilon_j = - K_B T \log(\frac{P_i}{P_j})
-\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[
-    \Delta \epsilon = - K_B T \log(\Delta P)
-\]</span></p>
-<p>This is a bit abusive towards notation</p>
-</div>
 </section><section id="what-is-entropy" class="slide level2">
-<h2>What is entropy</h2>
+<h2>What is entropy?</h2>
+<p>Suppose we have a state <span class="math inline">\(i\)</span> that comprises <span class="math inline">\(\Omega_i\)</span> microstates, each of probability <span class="math inline">\(p_i\)</span></p>
 <p><span class="math display">\[
-    S_i = K_B \log(\Omega_i)
-\]</span></p>
-<p><span class="math inline">\(\Omega_i\)</span> is the number of microstates within state <span class="math inline">\(i\)</span></p>
-<p><span class="math display">\[
-    \Delta G = \Delta H - T \Delta S
+    P_i = \Omega_i p_i
 \]</span></p>
 <div class="fragment">
 <p><span class="math display">\[
-    \Delta G = - K_B T \log(\Delta P) - K_B T \log(\Delta \Omega)
+    \epsilon_i = - K_B T \log(\Omega_i p_i) - K_B T \log(Z)
+\]</span></p>
+</div>
+</section><section id="whats-the-difference" class="slide level2">
+<h2>What’s the difference?</h2>
+<p><span class="math display">\[
+    \epsilon_i = - K_B T \log(\Omega_i p_i) - K_B T \log(Z)
+    \\
+    \epsilon_j = - K_B T \log(\Omega_j p_j) - K_B T \log(Z)
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+    \epsilon_i - \epsilon_j =  - K_B T \log(\Omega_i p_i) + K_B T \log(\Omega_j p_j)
 \]</span></p>
 </div>
 <div class="fragment">
 <p><span class="math display">\[
-    \Delta G = - K_B T \log(\Delta \Omega \Delta P)
+    \epsilon_i - \epsilon_j =   - K_B T \log(p_i) + K_B T \log(p_j)
+    \\ \qquad \qquad \qquad - K_B T \log(\Omega_i) + K_B T \log(\Omega_j)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \Delta \epsilon =  \Delta[- K_B T \log(p)] - T \Delta[K_B \log(\Omega)]
+\]</span></p>
+</div>
+</section><section id="anyone-recognise-this" class="slide level2">
+<h2>Anyone recognise this?</h2>
+<p><span class="math display">\[
+    \Delta \epsilon =  \Delta[- K_B T \log(p)] - T \Delta[K_B \log(\Omega)]
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+G = \epsilon
+\\
+H = - K_B T \log(p)
+\\
+S = K_B \log(\Omega)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \Delta G =   \Delta H - T \Delta S
 \]</span></p>
 </div>
 <div class="fragment">
@@ -195,10 +204,14 @@
 \]</span></span></p>
 </div>
 </section></section>
-<section><section id="what-happens-if-we-dont-make-that-assumption" class="title-slide slide level1"><h1>What happens if we don’t make that assumption?</h1><p>MD!</p></section><section id="what-happens-if-we-dont-make-that-assumption-1" class="slide level2">
-<h2>What happens if we don’t make that assumption?</h2>
-<p>We need to “sample” from the entire Boltzmann distribution</p>
-</section></section>
+<section id="what-happens-if-we-dont-make-that-assumption" class="title-slide slide level1" style="font-size: 24px"><h1>What happens if we don’t make that assumption?</h1><p><span style="font-size: 72px"><span class="math display">\[
+    P_i = \frac{
+        \exp(-\beta\epsilon_i)
+    }{
+        Z
+    }
+\]</span></span></p>
+<p>We need to “sample” from the entire Boltzmann distribution</p></section>
 <section id="no-more-maths" class="title-slide slide level1"><h1>No more maths</h1><p>I promise</p></section>
     </div>
   </div>
