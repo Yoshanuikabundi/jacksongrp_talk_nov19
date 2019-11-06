@@ -90,6 +90,7 @@ $$
 . . .
 
 Entropic effects must be part of the energy $\epsilon$
+Energy function doesn't need much detail
 
 # What happens if we don't make that assumption? {style="font-size: 24px"}
 
@@ -101,7 +102,7 @@ Entropic effects must be part of the energy $\epsilon$
     }
 $$]{style="font-size: 72px"}
 
-We need to *sample* from the entire Boltzmann distribution
+We need to *sample* from the entire Boltzmann distribution with a detailed energy function
 
 ## Sampling is hard
 
