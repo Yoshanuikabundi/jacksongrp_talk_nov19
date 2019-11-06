@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Josh Mitchell">
-  <meta name="dcterms.date" content="2019-11-09">
-  <title>Computational Chemistry Considered CHARMMful</title>
+  <title>Computational Chemistry</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -36,9 +35,9 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Computational Chemistry Considered CHARMMful</h1>
+  <h1 class="title">Computational Chemistry</h1>
+  <p class="subtitle">Considered CHARMMful</p>
   <p class="author">Josh Mitchell</p>
-  <p class="date">November 9, 2019</p>
 </section>
 
 <section id="why-am-i-here" class="title-slide slide level1"><h1>Why am I here</h1><p>Computational methods can be…</p>
@@ -50,8 +49,9 @@
 <p>Though usually not at the same time</p></section>
 <section><section id="lets-think-statistically" class="title-slide slide level1"><h1>Lets think statistically</h1></section><section id="protein-structure-forms-according-to-a-probability-distribution" class="slide level2">
 <h2>Protein structure forms according to a probability distribution</h2>
-</section><section id="folded-proteins-have-a-funnel-shaped-probability-distribution" class="slide level2">
+</section><section id="folded-proteins-have-a-funnel-shaped-probability-distribution" class="slide level2" style="font-size: 22px">
 <h2>Folded proteins have a funnel-shaped probability distribution</h2>
+<p><img data-src="figures/folded_prob.png" /></p>
 </section><section id="ready-for-some-maths" class="slide level2">
 <h2>Ready for some maths?</h2>
 </section><section id="the-boltzmann-distribution" class="slide level2" style="font-size: 24px">
@@ -71,6 +71,9 @@
     Z = \sum_{j}\exp(-\beta\epsilon_j)
 \]</span></span></p>
 </div>
+</section><section id="the-boltzmann-distribution-1" class="slide level2" style="font-size: 24px">
+<h2>The Boltzmann distribution</h2>
+<p><img data-src="figures/prob_and_ener.png" /></p>
 </section><section id="there-are-two-problems" class="slide level2">
 <h2>There are two problems</h2>
 <p><span style="font-size: 72px"><span class="math display">\[
@@ -86,7 +89,7 @@
 </ol>
 </section><section id="fast-methods-assume-there-is-only-one-important-state" class="slide level2">
 <h2>Fast methods assume there is only one important state</h2>
-<p>So we just find the minimum energy state</p>
+<p>So we just find the minimum energy state <span class="math inline">\(i\)</span></p>
 <p><span class="math display">\[
     P_\mathrm{min} = \frac{
         \exp(-\beta\epsilon_\mathrm{min})
@@ -197,6 +200,16 @@
     \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
 \]</span></p>
 </div>
+</section><section id="what-is-energy-1" class="slide level2">
+<h2>What <em>is</em> energy</h2>
+<p><span style="font-size: 58px"><span class="math display">\[
+    \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
+\]</span></span></p>
+<div class="fragment">
+<p><span class="math display">\[
+    \epsilon_{i\mathrm{rel}} = - K_B T \log(P_i)
+\]</span></p>
+</div>
 </section><section id="what-is-entropy" class="slide level2">
 <h2>What is entropy?</h2>
 <p>Suppose we have a state <span class="math inline">\(i\)</span> that comprises <span class="math inline">\(\Omega_i\)</span> microstates, each of probability <span class="math inline">\(p_i\)</span></p>
@@ -207,6 +220,30 @@
 <p><span class="math display">\[
     \epsilon_i = - K_B T \log(\Omega_i p_i) - K_B T \log(Z)
 \]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+    \epsilon_i = - K_B T \log(\Omega_i) - K_B T \log(p_i) - K_B T \log(Z)
+\]</span></p>
+</div>
+</section><section id="what-is-entropy-1" class="slide level2">
+<h2>What is entropy?</h2>
+<p>Suppose we have a state <span class="math inline">\(i\)</span> that comprises <span class="math inline">\(\Omega_i\)</span> microstates, each of probability <span class="math inline">\(p_i\)</span></p>
+<p><span style="font-size: 32px"><span class="math display">\[
+    \epsilon_i = - K_B T \log(\Omega_i) - K_B T \log(p_i) - K_B T \log(Z)
+\]</span></span></p>
+<div class="fragment">
+<p><span class="math display">\[
+    S_i = K_B \log(\Omega_i)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span style="font-size: 48px"><span class="math display">\[
+    \epsilon_i = - T S_i - K_B T \log(p_i) - K_B T \log(Z)
+\]</span></span></p>
+</div>
+<div class="fragment">
+<p>In reality, not all the microstates have the same energy, but this is the gist.</p>
 </div>
 </section><section id="whats-the-difference" class="slide level2">
 <h2>What’s the difference?</h2>
@@ -249,9 +286,6 @@ S = K_B \log(\Omega)
 <p><span class="math display">\[
     \Delta G =   \Delta H - T \Delta S
 \]</span></p>
-</div>
-<div class="fragment">
-<p>In reality, not all the microstates have the same energy, but this is the gist.</p>
 </div>
 </section><section id="if-you-want-more-check-out-stat-mech" class="slide level2">
 <h2>If you want more, check out stat mech!</h2>
@@ -349,7 +383,7 @@ S = K_B \log(\Omega)
 <p>Biased sampling methods are good if you have a good reaction coordinate.</p>
 <p>Ensemble sampling methods will probably be good very soon.</p>
 <p>Be careful with accelerated MD.</p>
-<p>Make sure you should know what you’re doing.</p>
+<p>Make sure you should know what you’re doing!</p>
 </section></section>
 <section id="further-reading" class="title-slide slide level1"><h1>Further reading</h1><div id="refs" role="doc-bibliography">
 <div id="ref-Braun2018Best">

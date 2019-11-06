@@ -9,3 +9,5 @@ blockquote {
 #refs {
     font-size: 16pt
 }
+
+.reveal section img { background:none; border:none; box-shadow:none; }

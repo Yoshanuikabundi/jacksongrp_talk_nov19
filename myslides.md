@@ -1,7 +1,7 @@
 ---
 author: Josh Mitchell
-title: Computational Chemistry Considered CHARMMful
-date: November 9, 2019
+title: Computational Chemistry
+subtitle: Considered CHARMMful
 
 theme: simple
 slideNumber: \"c"
@@ -23,7 +23,9 @@ Though usually not at the same time
 
 ## Protein structure forms according to a probability distribution
 
-## Folded proteins have a funnel-shaped probability distribution
+## Folded proteins have a funnel-shaped probability distribution {style="font-size: 22px"}
+
+![](figures/folded_prob.png)
 
 ## Ready for some maths?
 
@@ -56,6 +58,10 @@ $\beta = \frac{1}{K_BT}$ incorporates the temperature
     Z = \sum_{j}\exp(-\beta\epsilon_j)
 $$]{style="font-size: 32px"}
 
+## The Boltzmann distribution{style="font-size: 24px"}
+
+![](figures/prob_and_ener.png)
+
 ## There are two problems
 
 [$$
@@ -71,7 +77,7 @@ $$]{style="font-size: 72px"}
 
 ## Fast methods assume there is only one important state
 
-So we just find the minimum energy state
+So we just find the minimum energy state $i$
 
 $$
     P_\mathrm{min} = \frac{
@@ -209,6 +215,18 @@ $$
     \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
 $$
 
+## What *is* energy
+
+[$$
+    \epsilon_i = - K_B T \log(P_i) - K_B T \log(Z)
+$$]{style="font-size: 58px"}
+
+. . .
+
+$$
+    \epsilon_{i\mathrm{rel}} = - K_B T \log(P_i)
+$$
+
 ## What is entropy?
 
 Suppose we have a state $i$ that comprises $\Omega_i$ microstates, each of probability $p_i$
@@ -222,6 +240,37 @@ $$
 $$
     \epsilon_i = - K_B T \log(\Omega_i p_i) - K_B T \log(Z)
 $$
+
+. . .
+
+$$
+    \epsilon_i = - K_B T \log(\Omega_i) - K_B T \log(p_i) - K_B T \log(Z)
+$$
+
+
+## What is entropy?
+
+Suppose we have a state $i$ that comprises $\Omega_i$ microstates, each of probability $p_i$
+
+[$$
+    \epsilon_i = - K_B T \log(\Omega_i) - K_B T \log(p_i) - K_B T \log(Z)
+$$]{style='font-size: 32px'}
+
+. . .
+
+$$
+    S_i = K_B \log(\Omega_i)
+$$
+
+. . .
+
+[$$
+    \epsilon_i = - T S_i - K_B T \log(p_i) - K_B T \log(Z)
+$$]{style='font-size: 48px'}
+
+. . .
+
+In reality, not all the microstates have the same energy, but this is the gist.
 
 ## What's the difference?
 
@@ -271,10 +320,6 @@ $$
 $$
     \Delta G =   \Delta H - T \Delta S
 $$
-
-. . .
-
-In reality, not all the microstates have the same energy, but this is the gist.
 
 ## If you want more, check out stat mech!
 
@@ -404,10 +449,10 @@ Ensemble sampling methods will probably be good very soon.
 
 Be careful with accelerated MD.
 
-Make sure you should know what you're doing.
+Make sure you should know what you're doing!
 
-::: {#refs}
 # Further reading
+::: {#refs}
 :::
 
 ---
