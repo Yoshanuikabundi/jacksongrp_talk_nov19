@@ -41,6 +41,8 @@ $P_i$ is the probability of state $i$ at equilibrium
 
 $\exp(x)$ is the exponential function $e^x$
 
+$\beta = \frac{1}{K_BT}$ incorporates the temperature
+
 $\epsilon_i$ is the energy of state $i$
 
 ::: notes
@@ -49,8 +51,6 @@ What kind of energy $\epsilon_i$ is depends on how state $i$ is represented
 - Hamiltonian for canonical ensemble in phase space
 - Potential energy for canonical ensemble in configuration space
 :::
-
-$\beta = \frac{1}{K_BT}$ incorporates the temperature
 
 . . .
 
@@ -90,6 +90,7 @@ $$
 . . .
 
 Entropic effects must be part of the energy $\epsilon$
+
 Energy function doesn't need much detail
 
 # What happens if we don't make that assumption? {style="font-size: 24px"}
@@ -178,6 +179,7 @@ Run replicas
 
 ## So
 
+- We sample from the Boltzmann distribution
 - Simulation is the method, not the goal
 - Know what you're looking for
 - Check you've found it
@@ -349,6 +351,8 @@ Don't mix parameters from different force fields!
 
 Most force fields are not parameterised for kinetics!
 
+Most force fields are only parameterised at one temperature!
+
 ## CHARMM
 
 CHARMM22*
@@ -424,13 +428,25 @@ If your simulation crashes, try reducing the step size.
 
 Atomic production simulations should never need to be below 1 fs, or 2 fs with constraints.
 
-Adjacent frames are very similar - don't be afraid to drop them! Keeping 1000 frames for your whole simulation is probably overkill!
+Adjacent frames are very similar - don't be afraid to drop them!
 
 ## Non-monovalent metal cations
 
 Shape of orbitals is important IRL, but force fields are spherically symmetric!
 
 Some work has been done on introducing virtual particles to correct this
+
+## Box size
+
+Smaller box lets you have less water and faster simulation
+
+Too small box introduces finite size artifacts
+
+Keep your periodic image distance larger than VdW cutoff
+
+Rhombic Dodecahedral boxes have about 0.707 times the volume of a cubic box
+
+Orientation of protein can change PI distance!
 
 ## Protonation state
 
@@ -549,8 +565,21 @@ references:
   URL: http://www.sciencedirect.com/science/article/pii/S0005273616300347
   DOI: 10.1016/j.bbamem.2016.02.004
   ISSN: 0005-2736
+- id: Eastman2015Introduction
+  type: Webpage
+  author:
+  - family: Eastman
+    given: Peter
+  issued:
+  - year: 2015
+  accessed:
+  - year: 2019
+    month: 11
+    day: 7
+  title: Introduction to Statistical Mechanics
+  URL: https://peastman.github.io/statmech/
 
 
 nocite: |
-    @Braun2018Best
+    @Braun2018Best; @Eastman2015Introduction
 ...

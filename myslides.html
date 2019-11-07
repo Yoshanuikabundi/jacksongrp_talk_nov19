@@ -61,11 +61,11 @@
 \]</span></span></p>
 <p><span class="math inline">\(P_i\)</span> is the probability of state <span class="math inline">\(i\)</span> at equilibrium</p>
 <p><span class="math inline">\(\exp(x)\)</span> is the exponential function <span class="math inline">\(e^x\)</span></p>
+<p><span class="math inline">\(\beta = \frac{1}{K_BT}\)</span> incorporates the temperature</p>
 <p><span class="math inline">\(\epsilon_i\)</span> is the energy of state <span class="math inline">\(i\)</span></p>
 <aside class="notes">
 <p>What kind of energy <span class="math inline">\(\epsilon_i\)</span> is depends on how state <span class="math inline">\(i\)</span> is represented - Free energy for coarse grained representations - Hamiltonian for canonical ensemble in phase space - Potential energy for canonical ensemble in configuration space</p>
 </aside>
-<p><span class="math inline">\(\beta = \frac{1}{K_BT}\)</span> incorporates the temperature</p>
 <div class="fragment">
 <p><span style="font-size: 32px"><span class="math display">\[
     Z = \sum_{j}\exp(-\beta\epsilon_j)
@@ -98,7 +98,8 @@
     } = 1
 \]</span></p>
 <div class="fragment">
-<p>Entropic effects must be part of the energy <span class="math inline">\(\epsilon\)</span> Energy function doesn’t need much detail</p>
+<p>Entropic effects must be part of the energy <span class="math inline">\(\epsilon\)</span></p>
+<p>Energy function doesn’t need much detail</p>
 </div>
 </section></section>
 <section><section id="what-happens-if-we-dont-make-that-assumption" class="title-slide slide level1" style="font-size: 24px"><h1>What happens if we don’t make that assumption?</h1><p><span style="font-size: 72px"><span class="math display">\[
@@ -170,6 +171,7 @@
 </section><section id="so" class="slide level2">
 <h2>So</h2>
 <ul>
+<li>We sample from the Boltzmann distribution</li>
 <li>Simulation is the method, not the goal</li>
 <li>Know what you’re looking for</li>
 <li>Check you’ve found it</li>
@@ -302,6 +304,7 @@ S = K_B \log(\Omega)
 <p>Don’t confuse force field and software!</p>
 <p>Don’t mix parameters from different force fields!</p>
 <p>Most force fields are not parameterised for kinetics!</p>
+<p>Most force fields are only parameterised at one temperature!</p>
 </section><section id="charmm" class="slide level2">
 <h2>CHARMM</h2>
 <dl>
@@ -367,11 +370,18 @@ S = K_B \log(\Omega)
 <p>It’s OK to make it as big as possible, as long as your simulation doesn’t crash.</p>
 <p>If your simulation crashes, try reducing the step size.</p>
 <p>Atomic production simulations should never need to be below 1 fs, or 2 fs with constraints.</p>
-<p>Adjacent frames are very similar - don’t be afraid to drop them! Keeping 1000 frames for your whole simulation is probably overkill!</p>
+<p>Adjacent frames are very similar - don’t be afraid to drop them!</p>
 </section><section id="non-monovalent-metal-cations" class="slide level2">
 <h2>Non-monovalent metal cations</h2>
 <p>Shape of orbitals is important IRL, but force fields are spherically symmetric!</p>
 <p>Some work has been done on introducing virtual particles to correct this</p>
+</section><section id="box-size" class="slide level2">
+<h2>Box size</h2>
+<p>Smaller box lets you have less water and faster simulation</p>
+<p>Too small box introduces finite size artifacts</p>
+<p>Keep your periodic image distance larger than VdW cutoff</p>
+<p>Rhombic Dodecahedral boxes have about 0.707 times the volume of a cubic box</p>
+<p>Orientation of protein can change PI distance!</p>
 </section><section id="protonation-state" class="slide level2">
 <h2>Protonation state</h2>
 <p>Set at start of simulation.</p>
@@ -388,6 +398,9 @@ S = K_B \log(\Omega)
 <section id="further-reading" class="title-slide slide level1"><h1>Further reading</h1><div id="refs" role="doc-bibliography">
 <div id="ref-Braun2018Best">
 <p>Braun, Efrem, Justin Gilmer, Heather B. Mayes, David L. Mobley, Jacob I. Monroe, Samarjeet Prasad, and Daniel M. Zuckerman. 2018. “Best Practices for Foundations in Molecular Simulations [Article V1.0].” <em>Living Journal of Computational Molecular Science</em> 1 (1): 5957. <a href="https://doi.org/10.33011/livecoms.1.1.5957">https://doi.org/10.33011/livecoms.1.1.5957</a>.</p>
+</div>
+<div id="ref-Eastman2015Introduction">
+<p>Eastman, Peter. 2015. “Introduction to Statistical Mechanics.” 2015. <a href="https://peastman.github.io/statmech/">https://peastman.github.io/statmech/</a>.</p>
 </div>
 <div id="ref-Grossfield2018Best">
 <p>Grossfield, Alan, Paul N. Patrone, Daniel R. Roe, Andrew J. Schultz, Daniel Siderius, and Daniel M. Zuckerman. 2018. “Best Practices for Quantification of Uncertainty and Sampling Quality in Molecular Simulations [Article V1.0].” <em>Living Journal of Computational Molecular Science</em> 1 (1): 5067. <a href="https://doi.org/10.33011/livecoms.1.1.5067">https://doi.org/10.33011/livecoms.1.1.5067</a>.</p>
