@@ -106,12 +106,17 @@ $$]{style="font-size: 72px"}
 We need to *sample* from the entire Boltzmann distribution with a detailed energy function
 
 ## Sampling is hard
+### The curse of dimensionality
 
-### Levinthal's paradox
+![](figures/chignolin.png)
+
+## Levinthal's paradox
 
 ~50 KDa, 500 residue protein
 
 Assume each residue is either α-helix or β-sheet
+
+500 binary dimensions
 
 Looking for 1 folded state in 2^500^ (~10^150^) possible states
 
