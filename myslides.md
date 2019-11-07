@@ -110,6 +110,8 @@ We need to *sample* from the entire Boltzmann distribution with a detailed energ
 
 ![](figures/chignolin.png)
 
+[@Daisuke2006Folding]
+
 ## Levinthal's paradox
 
 ~50 KDa, 500 residue protein
@@ -473,7 +475,7 @@ Be careful with accelerated MD.
 
 Make sure you should know what you're doing!
 
-# Further reading
+# Further reading and references {style='font-size: 24px'}
 ::: {#refs}
 :::
 
@@ -583,6 +585,39 @@ references:
     day: 7
   title: Introduction to Statistical Mechanics
   URL: https://peastman.github.io/statmech/
+- id: Daisuke2006Folding
+  type: article-journal
+  author:
+  - family: Satoh
+    given: Daisuke
+  - family: Shimizu
+    given: Kentaro
+  - family: Nakamura
+    given: Shugo
+  - family: Terada
+    given: Tohru
+  issued:
+  - year: 2006
+  title: Folding free-energy landscape of a 10-residue mini-protein, chignolin
+  container-title: FEBS Letters
+  page: 3422-3426
+  volume: '580'
+  issue: '14'
+  abstract: Chignolin is an artificial mini-protein composed of 10 residues (GYDPETGTWG)
+    that has been shown to cooperatively fold into a β-hairpin structure in water.
+    We extensively explored the conformational space of chignolin using a 180-ns multicanonical
+    molecular dynamics (MD) simulation and analyzed its folding free-energy landscape.
+    In the MD trajectory, we found structures that satisfy 99% of the experimental
+    restraints and are quite close to the experimentally determined structures with
+    Cα root-mean-square-deviations of less than 0.5 Å. These structures formed a large
+    cluster in the conformational space with the largest probability of existence,
+    agreeing well with the experiment.
+  keyword: GB, generalized Born, MD, molecular dynamics, NMR, nuclear magnetic resonance,
+    RMSD, root-mean-square deviation, SA, surface area, Folding simulation, Molecular
+    dynamics, Multicanonical, Generalized Born model, Chignolin, β-Hairpin
+  URL: https://febs.onlinelibrary.wiley.com/doi/abs/10.1016/j.febslet.2006.05.015
+  DOI: 10.1016/j.febslet.2006.05.015
+
 
 
 nocite: |
