@@ -3,7 +3,6 @@ author: Josh Mitchell
 title: Computational Chemistry
 subtitle: Considered CHARMMful
 
-theme: simple
 slideNumber: \"c"
 margin: 0.1
 
@@ -44,19 +43,19 @@ $\exp(x)$ is the exponential function $e^x$
 $\beta = \frac{1}{K_BT}$ incorporates the temperature
 
 $\epsilon_i$ is the energy of state $i$
-
-::: notes
-What kind of energy $\epsilon_i$ is depends on how state $i$ is represented
-- Free energy for coarse grained representations
-- Hamiltonian for canonical ensemble in phase space
-- Potential energy for canonical ensemble in configuration space
-:::
-
 . . .
 
 [$$
     Z = \sum_{j}\exp(-\beta\epsilon_j)
 $$]{style="font-size: 32px"}
+
+::: notes
+What kind of energy $\epsilon_i$ is depends on how state $i$ is represented:
+
+- Free energy for coarse grained representations
+- Hamiltonian for canonical ensemble in phase space
+- Potential energy for canonical ensemble in configuration space
+:::
 
 ## The Boltzmann distribution{style="font-size: 24px"}
 
@@ -286,7 +285,7 @@ In reality, not all the microstates have the same energy, but this is the gist.
 
 $$
     \epsilon_i = - K_B T \log(\Omega_i p_i) - K_B T \log(Z)
-    \\
+$$$$
     \epsilon_j = - K_B T \log(\Omega_j p_j) - K_B T \log(Z)
 $$
 
@@ -300,7 +299,8 @@ $$
 
 $$
     \epsilon_i - \epsilon_j =   - K_B T \log(p_i) + K_B T \log(p_j)
-    \\ \qquad \qquad \qquad - K_B T \log(\Omega_i) + K_B T \log(\Omega_j)
+$$$$
+     \qquad \qquad \qquad - K_B T \log(\Omega_i) + K_B T \log(\Omega_j)
 $$
 
 . . .
@@ -319,9 +319,9 @@ $$
 
 $$
 G = \epsilon
-\\
+$$$$
 H = - K_B T \log(p)
-\\
+$$$$
 S = K_B \log(\Omega)
 $$
 

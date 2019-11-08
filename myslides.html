@@ -62,15 +62,18 @@
 <p><span class="math inline">\(P_i\)</span> is the probability of state <span class="math inline">\(i\)</span> at equilibrium</p>
 <p><span class="math inline">\(\exp(x)\)</span> is the exponential function <span class="math inline">\(e^x\)</span></p>
 <p><span class="math inline">\(\beta = \frac{1}{K_BT}\)</span> incorporates the temperature</p>
-<p><span class="math inline">\(\epsilon_i\)</span> is the energy of state <span class="math inline">\(i\)</span></p>
-<aside class="notes">
-<p>What kind of energy <span class="math inline">\(\epsilon_i\)</span> is depends on how state <span class="math inline">\(i\)</span> is represented - Free energy for coarse grained representations - Hamiltonian for canonical ensemble in phase space - Potential energy for canonical ensemble in configuration space</p>
-</aside>
-<div class="fragment">
+<p><span class="math inline">\(\epsilon_i\)</span> is the energy of state <span class="math inline">\(i\)</span> . . .</p>
 <p><span style="font-size: 32px"><span class="math display">\[
     Z = \sum_{j}\exp(-\beta\epsilon_j)
 \]</span></span></p>
-</div>
+<aside class="notes">
+<p>What kind of energy <span class="math inline">\(\epsilon_i\)</span> is depends on how state <span class="math inline">\(i\)</span> is represented:</p>
+<ul>
+<li>Free energy for coarse grained representations</li>
+<li>Hamiltonian for canonical ensemble in phase space</li>
+<li>Potential energy for canonical ensemble in configuration space</li>
+</ul>
+</aside>
 </section><section id="the-boltzmann-distribution-1" class="slide level2" style="font-size: 24px">
 <h2>The Boltzmann distribution</h2>
 <p><img data-src="figures/prob_and_ener.png" /></p>
@@ -256,7 +259,7 @@
 <h2>What’s the difference?</h2>
 <p><span class="math display">\[
     \epsilon_i = - K_B T \log(\Omega_i p_i) - K_B T \log(Z)
-    \\
+\]</span><span class="math display">\[
     \epsilon_j = - K_B T \log(\Omega_j p_j) - K_B T \log(Z)
 \]</span></p>
 <div class="fragment">
@@ -267,7 +270,8 @@
 <div class="fragment">
 <p><span class="math display">\[
     \epsilon_i - \epsilon_j =   - K_B T \log(p_i) + K_B T \log(p_j)
-    \\ \qquad \qquad \qquad - K_B T \log(\Omega_i) + K_B T \log(\Omega_j)
+\]</span><span class="math display">\[
+     \qquad \qquad \qquad - K_B T \log(\Omega_i) + K_B T \log(\Omega_j)
 \]</span></p>
 </div>
 <div class="fragment">
@@ -283,9 +287,9 @@
 <div class="fragment">
 <p><span class="math display">\[
 G = \epsilon
-\\
+\]</span><span class="math display">\[
 H = - K_B T \log(p)
-\\
+\]</span><span class="math display">\[
 S = K_B \log(\Omega)
 \]</span></p>
 </div>
